@@ -1,2 +1,2 @@
 # ReStore
-Ecommerce Application made by Asp.Net Core and ReactJs, Redux
+Ecommerce Application made by Asp.Net Core and ReactJs, TypeScript, Redux
