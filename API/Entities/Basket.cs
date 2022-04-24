@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using SQLitePCL;
 
 namespace API.Entities
 {
@@ -8,6 +9,10 @@ namespace API.Entities
         public int Id { get; set; }
         public string BuyerId { get; set; }
         public List<BasketItem> Items { get; set; } = new ();
+
+        public string PaymentIntendId { get; set; }
+
+        public string ClientSecret { get; set; }
 
         public void AddItem(Product product, int quantity)
         {

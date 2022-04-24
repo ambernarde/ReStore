@@ -2,7 +2,6 @@ import { store } from './../store/configureStore';
 import { PaginatedResponse } from './../models/pagination';
 import  axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
-import { request } from 'http';
 
 
 const sleep = () => new Promise(resolve => setTimeout(resolve,500));
@@ -59,9 +58,7 @@ axios.interceptors.response.use(async response => {
     return Promise.reject(error.response);
 })
 
-// function responseBodyFN(response:AxiosResponse){
-//     return response.data;
-// }
+
 
 const requests = {
     get: (url: string,params?: URLSearchParams) => axios.get(url,{params}).then(responseBody),
@@ -103,12 +100,18 @@ const Orders = {
     create:(values:any) => requests.post('orders',values)
 }
 
+const Payments = {
+    createPaymentIntent : () => requests.post('payments',{})
+}
+
+
 const agent = {
     Catalog,
     TestErros,
     Basket,
     Account,
-    Orders
+    Orders,
+    Payments
 }
 
 export default agent;

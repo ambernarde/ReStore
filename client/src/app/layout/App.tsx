@@ -12,7 +12,6 @@ import Header from "./Header";
 import 'react-toastify/dist/ReactToastify.css';
 import BasketPage from "../../features/basket/BasketPage";
 import LoadingComponent from "./LoadingComponent";
-import CheckoutPage from "../../features/checkout/CheckoutPage";
 import { useAppDispatch } from "../store/configureStore";
 import {fetchBasketAsync} from "../../features/basket/basketSlice";
 import Login from "../../features/account/Login";
@@ -20,6 +19,7 @@ import Register from "../../features/account/Register";
 import { fetchCurrentUser } from "../../features/account/accountSlice";
 import PrivateRoute from "./PrivateRoute";
 import Order from "../../features/orders/Order";
+import CheckoutWrapper from "../../features/checkout/CheckoutWrapper";
 
 
 function App () {
@@ -83,7 +83,7 @@ if(loading) return <LoadingComponent message='Initialising app...'/>
         <Route exact path='/about'       component={AboutPage}  />
         <Route exact path='/contact'     component={ContactPage}  />
         <Route exact path='/basket'      component={BasketPage} />
-        <PrivateRoute path='/checkout'   component={CheckoutPage} /> 
+        <PrivateRoute path='/checkout'   component={CheckoutWrapper} /> 
         <PrivateRoute path='/orders'     component={Order} />
         <Route path='/login'             component={Login} /> 
         <Route path='/register'          component={Register} /> 
