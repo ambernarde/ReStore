@@ -76,19 +76,21 @@ if(loading) return <LoadingComponent message='Initialising app...'/>
        <ToastContainer position='bottom-right' hideProgressBar theme='colored' />
        <CssBaseline/>
        <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
-       <Container>
-        <Route exact path='/'            component={HomePage}  /> 
-        <Route exact path='/catalog'     component={Catalog}  />
-        <Route exact path='/catalog/:id' component={ProductDetails}  />
-        <Route exact path='/about'       component={AboutPage}  />
-        <Route exact path='/contact'     component={ContactPage}  />
-        <Route exact path='/basket'      component={BasketPage} />
-        <PrivateRoute path='/checkout'   component={CheckoutWrapper} /> 
-        <PrivateRoute path='/orders'     component={Order} />
-        <Route path='/login'             component={Login} /> 
-        <Route path='/register'          component={Register} /> 
-
-       </Container>    
+       <Route exact path='/'            component={HomePage}  /> 
+       <Route path={'/(.+)'} render={() => (
+        <Container sx={{ mt:4}}>              
+            <Route exact path='/catalog'     component={Catalog}  />
+            <Route exact path='/catalog/:id' component={ProductDetails}  />
+            <Route exact path='/about'       component={AboutPage}  />
+            <Route exact path='/contact'     component={ContactPage}  />
+            <Route exact path='/basket'      component={BasketPage} />
+            <PrivateRoute path='/checkout'   component={CheckoutWrapper} /> 
+            <PrivateRoute path='/orders'     component={Order} />
+            <Route path='/login'             component={Login} /> 
+            <Route path='/register'          component={Register} /> 
+        </Container>
+       )} />
+     
     </ThemeProvider>
   );
 }
